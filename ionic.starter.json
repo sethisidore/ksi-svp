@@ -1,5 +1,5 @@
 {
-  "name": "Tabs Starter",
+  "name": "Secure Voting Platform",
   "baseref": "master",
   "tarignore": [
     "node_modules",

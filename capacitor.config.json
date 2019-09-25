@@ -1,0 +1,7 @@
+{
+  "appId": "com.ksi.svp",
+  "appName": "ksi-svp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

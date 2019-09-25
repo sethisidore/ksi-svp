@@ -1,5 +1,7 @@
 {
   "name": "ksi-svp",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
