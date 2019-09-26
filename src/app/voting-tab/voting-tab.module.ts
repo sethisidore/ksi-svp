@@ -4,15 +4,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MorePage } from './more.page';
+import { VotingTabPage } from './voting-tab.page';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild([{ path: '', component: MorePage }])
+    RouterModule.forChild([{ path: '', component: VotingTabPage }])
   ],
-  declarations: [MorePage]
+  declarations: [VotingTabPage]
 })
-export class MorePageModule {}
+export class VotingTabPageModule {}

@@ -9,12 +9,12 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: 'voting',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../home/home.module').then(m => m.HomePageModule)
+              import('../voting-tab/voting-tab.module').then(m => m.VotingTabPageModule)
           }
         ]
       },
@@ -24,7 +24,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../observe/observe.module').then(m => m.ObservePageModule)
+              import('../observe-tab/observe-tab.module').then(m => m.ObserveTabPageModule)
           }
         ]
       },
@@ -34,20 +34,20 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../more/more.module').then(m => m.MorePageModule)
+              import('../more-tab/more-tab.module').then(m => m.MoreTabPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/t/home',
+        redirectTo: '/t/observe',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/t/home',
+    redirectTo: '/t/observe',
     pathMatch: 'full'
   }
 ];

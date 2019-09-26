@@ -4,15 +4,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { HomePage } from './home.page';
+import { MoreTabPage } from './more-tab.page';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild([{ path: '', component: HomePage }])
+    RouterModule.forChild([{ path: '', component: MoreTabPage }])
   ],
-  declarations: [HomePage]
+  declarations: [MoreTabPage]
 })
-export class HomePageModule {}
+export class MoreTabPageModule {}
