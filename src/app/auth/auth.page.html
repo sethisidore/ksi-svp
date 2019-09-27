@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card">
+      <img src="/assets/shapes.svg" alt="" />
+      <ion-card-header>
+        <ion-card-subtitle>Get Started</ion-card-subtitle>
+        <ion-card-title>Welcome to KSI Secure Voting Platform</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Please login or verify the one-time-password sent to your mobile to gain full to voting services</p>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="full" (click)="login()">login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="full" (click)="verifyOTP()">login</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
+

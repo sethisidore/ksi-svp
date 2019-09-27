@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color="light", (click)="dismissOTP()">Close</ion-button>
+    <ion-title>Verify OTP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">OTP Code:</ion-label>
+      <ion-input formControlName="otpCode"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" color="primary" expand="full" [disabled]="!loginForm.valid">authenticate</ion-button>
+  </form>
+
+  <p text-center>Did not receive any code?</p>
+  <ion-button expand="full" color="blue">Re-send OTP</ion-button>
+</ion-content>
