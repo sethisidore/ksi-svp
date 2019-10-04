@@ -6,6 +6,11 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+
+  /* For removing console logs during production incase of dangling log not removed
+  if (window) {
+    window.console.log = () => {};
+  }*/
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)

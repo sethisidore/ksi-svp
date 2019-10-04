@@ -8,11 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
     canActivate: [AuthGuard]
   },
-  { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' }
+  { path: '', loadChildren: './auth/auth.module#AuthPageModule' }
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, enableTracing: true })
   ],
   exports: [RouterModule]
 })
