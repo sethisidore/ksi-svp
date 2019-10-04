@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, CanActivateChild, CanLoad, Route } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { NavController } from '@ionic/angular';
 
 import { AuthService } from './auth.service';
 
@@ -10,8 +9,8 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(
-    private nav: NavController,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   canActivate(
@@ -34,8 +33,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return this.checkLogin(url);
   }
 
-  checkLogin(url: string) {
-    if (this.auth.isLoggedIn()) {
+  checkLogin(url: string): boolean {
+    if (this.auth.isLoggedIn().then(status => status)) {
       return true;
     }
     /**
@@ -53,7 +52,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
      * this.router.navigate(['/login', navigationExtras]);
      *
      */
-    this.nav.navigateRoot('/welcome');
+    this.router.navigate(['/login']);
     return false;
   }
 }

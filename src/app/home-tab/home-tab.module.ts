@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AuthPage } from './auth.page';
-import { OtpPage } from './otp/otp.page';
+import { HomeTabPage } from './home-tab.page';
 
 const routes: Routes = [
-  { path: 'login', component: AuthPage },
-  { path: 'otp', component: OtpPage }
+  {
+    path: '',
+    component: HomeTabPage
+  }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AuthPage, OtpPage]
+  declarations: [HomeTabPage]
 })
-export class AuthPageModule {}
+export class HomeTabPageModule {}

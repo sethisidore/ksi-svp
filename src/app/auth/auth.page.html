@@ -1,32 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start" [routerLink]="['../home']">
+        <ion-back-button color="medium"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to KSI Secure Voting Platform</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Please login or verify the one-time-password sent to your mobile to gain full to voting services</p>
-      </ion-card-content>
-    </ion-card>
-</ion-content>
+  <ion-grid fixed="md">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10" class="ion-align-self-center">
+        <ion-card class="ion-padding">
+          <form [formGroup]="loginForm" ngSubmit="onSubmit">
+            <ion-item>
+              <ion-label position="inline">VIN: </ion-label>
+              <ion-input formControlName="vin" placeholder="817G-J2J9-91821931"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="inline">Contact: </ion-label>
+              <ion-input formControlName="contact" placeholder="+234 81 002 00115"></ion-input>
+            </ion-item>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-row>
-      <ion-col>
-        <ion-button color="primary" expand="full" (click)="login()">login</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="primary" expand="full" (click)="verifyOTP()">login</ion-button>
+            <ion-button shape="round" color="success" expand="full" fill="outline" class="align-self-center"
+              [disabled]="!loginForm.valid">Login
+            </ion-button>
+            <p>
+              <ion-text class="ion-text-center">Already logged in?</ion-text>
+            </p>
+            <ion-button [routerLink]="['/otp']" color="secondary" shape="round" expand="full" fill="outline"
+              class="align-self-center">Verify OTP
+            </ion-button>
+          </form>
+        </ion-card>
       </ion-col>
     </ion-row>
-  </ion-toolbar>
-</ion-footer>
-
+  </ion-grid>

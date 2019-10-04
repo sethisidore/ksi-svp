@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
@@ -15,8 +14,6 @@ export class OtpPage implements OnInit {
   constructor(
     private auth: AuthService,
     private fb: FormBuilder,
-    private modalController: ModalController,
-    private nav: NavController
   ) { }
 
   ngOnInit() {
@@ -25,13 +22,11 @@ export class OtpPage implements OnInit {
     });
   }
 
-  dismissOTP() {
-    this.modalController.dismiss();
+  onSubmit() {
+    this.auth.verifyOTP(this.otpForm.value);
   }
 
-  onSubmit() {
-    this.auth.login(this.otpForm.value).subscribe(() => {
-      this.nav.navigateRoot('/vote');
-    });
+  refreshOTP() {
+    this.auth.resendOTP();
   }
 }

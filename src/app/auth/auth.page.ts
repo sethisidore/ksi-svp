@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, MenuController, NavController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
-import { OtpPage } from './otp/otp.page';
-import { LoginPage } from './login/login.page';
 
 @Component({
   selector: 'app-auth',
@@ -11,36 +11,35 @@ import { LoginPage } from './login/login.page';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
+  loginForm: FormGroup;
 
   constructor(
     private auth: AuthService,
-    private modalController: ModalController,
+    private fb: FormBuilder,
     private menu: MenuController,
-    private nav: NavController
+    private router: Router
   ) {
     this.menu.enable(false);
   }
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      vin: ['', [Validators.pattern(/[A-Z1-9]{4}\[1-9A-Z]{4}\-[0-9]{8}/), Validators.required]],
+      contact: ['', Validators.required]
+    });
   }
 
   ionViewWillEnter() {
-    if (this.auth.isLoggedIn()) {
-      this.nav.navigateRoot('/voting');
+    let status: boolean;
+    this.auth.isLoggedIn().then(resp => status = resp);
+    if (status === true) {
+      this.router.navigate(['/voting']);
     }
   }
 
-  async login() {
-    const loginModal = await this.modalController.create({
-      component: LoginPage
+  onSubmit() {
+    this.auth.login(this.loginForm.value).subscribe(() => {
+      this.router.navigate(['/otp']);
     });
-    return await loginModal.present();
-  }
-
-  async verifyOTP() {
-    const otpModal = await this.modalController.create({
-      component: OtpPage
-    });
-    return await otpModal.present();
   }
 }
