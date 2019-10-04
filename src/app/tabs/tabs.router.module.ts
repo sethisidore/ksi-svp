@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: 't',
+    path: '',
     component: TabsPage,
     children: [
+      { path: '', loadChildren: './../home-tab/home-tab.module#HomeTabPageModule' },
       {
         path: 'voting',
+        canActivateChild: [AuthGuard],
         children: [
           {
             path: '',
+            canActivateChild: [AuthGuard],
             loadChildren: () =>
               import('../voting-tab/voting-tab.module').then(m => m.VotingTabPageModule)
           }
@@ -20,9 +24,11 @@ const routes: Routes = [
       },
       {
         path: 'observe',
+        canActivateChild: [AuthGuard],
         children: [
           {
             path: '',
+            canActivateChild: [AuthGuard],
             loadChildren: () =>
               import('../observe-tab/observe-tab.module').then(m => m.ObserveTabPageModule)
           }
@@ -38,16 +44,17 @@ const routes: Routes = [
           }
         ]
       },
+      {path: 'logout' },
       {
         path: '',
-        redirectTo: '/t/observe',
+        redirectTo: '/',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/t/observe',
+    redirectTo: '/',
     pathMatch: 'full'
   }
 ];

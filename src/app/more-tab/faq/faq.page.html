@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" [routerLink]="['..']">
+      <ion-back-button color="medium"> </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Frequently Asked Questions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-grid fixed="md">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10" class="ion-align-self-center">
+      <ion-card class="ion-padding" *ngFor="let entry of Questions">
+        <ion-card-header>
+          <ion-card-title> {{ entry.question }} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content> {{ entry.answer }} </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

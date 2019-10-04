@@ -1,19 +1,30 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="flash"></ion-icon>
+
+    <ion-tab-button tab="''">
+      <ion-icon name="home"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
+    <ion-tab-button tab="voting">
+      <ion-icon name="finger-print"></ion-icon>
+      <ion-label>Voting</ion-label>
+    </ion-tab-button>
+
     <ion-tab-button tab="observe">
-      <ion-icon name="apps"></ion-icon>
+      <ion-icon name="search"></ion-icon>
       <ion-label>Observe</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="more">
-      <ion-icon name="send"></ion-icon>
+      <ion-icon name="information-circle"></ion-icon>
       <ion-label>More</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['../Logout']">
+      <ion-icon name="unlock"></ion-icon>
+      <ion-label>Logout</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 
