@@ -7,24 +7,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-grid>
-  <ion-row class="ion-justify-content-center">
+<ion-content class="ion-padding">
 
-    <ion-col size="10" class="ion-align-self-center">
-      <ion-card class="ion-padding">
-        <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
-          <ion-item>
-            <ion-label position="floating">OTP Code:</ion-label>
-            <ion-input formControlName="otpCode" placeholder="821 129"></ion-input>
-          </ion-item>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
 
-            <ion-button type="submit" color="primary" expand="full" shape="round" [disabled]="!otpForm.valid">verify</ion-button>
-        </form>
+      <ion-col size="10" class="ion-align-self-center">
+        <ion-card class="ion-padding">
+          <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+            <ion-item>
+              <ion-label position="floating">OTP Code:</ion-label>
+              <ion-input formControlName="otpCode" placeholder="821 129"></ion-input>
+            </ion-item>
+
+            <ion-button type="submit" color="primary" expand="full" shape="round" [disabled]="!otpForm.valid">verify
+            </ion-button>
+          </form>
 
           <p class="ion-text-center">Did not receive any code?</p>
-          <ion-button expand="full" fill="outline" shape="round" color="secondary" (click)="refreshOTP()">Re-send OTP</ion-button>
-      </ion-card>
-    </ion-col>
+          <ion-button expand="full" fill="outline" shape="round" color="secondary" (click)="refreshOTP()">Re-send OTP
+          </ion-button>
+        </ion-card>
+      </ion-col>
 
-  </ion-row>
-</ion-grid>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

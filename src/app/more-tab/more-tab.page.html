@@ -5,34 +5,38 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding">
 
-<ion-grid fixed="md">
-  <ion-col size="10" class="ion-justify-content-center ion-align-items-center">
-    <ion-card class="ion-padding">
-      <ion-card-header>
-        <ion-card-title>
-          <ion-button [routerLink]="['faqs']" fill="outline" expand="full" shape="round">Frequently Asked Questions</ion-button>
-        </ion-card-title>
-      </ion-card-header>
-    </ion-card>
+  <ion-grid fixed="md">
+    <ion-col size="10" class="ion-justify-content-center ion-align-items-center">
+      <ion-card class="ion-padding">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-button [routerLink]="['faqs']" fill="outline" expand="full" shape="round">Frequently Asked Questions
+            </ion-button>
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          <ion-button [routerLink]="['bugs']" fill="outline" expand="full" shape="round">Report bugs</ion-button>
-        </ion-card-title>
-      </ion-card-header>
-    </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-button [routerLink]="['bugs']" fill="outline" expand="full" shape="round">Report bugs</ion-button>
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>App Info</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Version: {{ version }} </p>
-        <p>Build: {{ build }} </p>
-        <p>Hash: {{ hash }} </p>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-</ion-grid>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>App Info</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Version: {{ version }} </p>
+          <p>Build: {{ build }} </p>
+          <p>Hash: {{ hash }} </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-grid>
+
+</ion-content>

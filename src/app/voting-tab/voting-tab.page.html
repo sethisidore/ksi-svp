@@ -6,16 +6,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-grid fixed="md">
-  <ion-row class="ion-justify-content-center" *ngFor="let item of Options; let i of [1-10]">
-    <ion-col class="ion-align-self-center" size="10">
-      <ion-card class="ion-padding">
-        <ion-card-header>
-          <ion-card-title>
-            <ion-button expand="full" color="medium" [routerLink]="['request']"> {{ item }} </ion-button>
-          </ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-content class="ion-padding">
+
+  <ion-grid fixed="md">
+    <ion-row class="ion-justify-content-center" *ngFor="let item of Options; let i of [1-10]">
+      <ion-col class="ion-align-self-center" size="10">
+        <ion-card class="ion-padding">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-button expand="full" color="medium" [routerLink]="['request']"> {{ item }} </ion-button>
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

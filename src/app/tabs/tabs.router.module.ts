@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: TabsPage,
     children: [
-      { path: '', loadChildren: './../home-tab/home-tab.module#HomeTabPageModule' },
+      { path: 'home', loadChildren: () => import('../home-tab/home-tab.module').then(m => m.HomeTabPageModule) },
       {
         path: 'voting',
         canActivateChild: [AuthGuard],
@@ -47,14 +47,14 @@ const routes: Routes = [
       {path: 'logout' },
       {
         path: '',
-        redirectTo: '/',
+        redirectTo: 'home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];
