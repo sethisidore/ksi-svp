@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class AuthService {
   token: TokenPayload;
-  authUrl = 'api/auth';
+  authUrl = 'localhost:3000/api/auth';
 
   constructor(
     private http: HttpClient,
@@ -25,7 +25,7 @@ export class AuthService {
   verifyOTP(otp: string) {
     this.http.post<TokenPayload>(`${this.authUrl}/otp`, otp).subscribe(resp => {
       this.storage.setObject('auth-token', resp).then(() => {
-        this.router.navigate(['/voting']);
+        this.router.navigate(['/tabs/voting']);
       });
     });
   }
@@ -49,4 +49,5 @@ export interface TokenPayload {
   id: string;
   expires: number;
   vin: string;
+  regWard: string;
 }

@@ -9,7 +9,7 @@ import { AlertService } from './alert.service';
   providedIn: 'root'
 })
 export class HttpErrorInterceptor implements HttpInterceptor {
-  alertService: AlertService;
+  constructor( private alertService: AlertService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)

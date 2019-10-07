@@ -33,7 +33,7 @@ export class AuthPage implements OnInit {
     let status: boolean;
     this.auth.isLoggedIn().then(resp => status = resp);
     if (status === true) {
-      this.router.navigate(['/voting']);
+      this.router.navigate(['/tabs/voting']);
     }
   }
 

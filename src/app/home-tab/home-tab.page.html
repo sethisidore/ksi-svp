@@ -21,10 +21,10 @@
   <ion-toolbar>
     <ion-row>
       <ion-col>
-        <ion-button color="primary" expand="full" [routerLink]="['/login']">login</ion-button>
+        <ion-button color="primary" expand="full" [routerLink]="['/login']" [disabled]="status">login</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="success" expand="full" [routerLink]="['/otp']">Verify OTP</ion-button>
+        <ion-button color="success" expand="full" [routerLink]="['/otp']" [disabled]="status">Verify OTP</ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

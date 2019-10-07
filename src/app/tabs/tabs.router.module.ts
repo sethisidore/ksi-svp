@@ -6,17 +6,17 @@ import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children: [
       { path: 'home', loadChildren: () => import('../home-tab/home-tab.module').then(m => m.HomeTabPageModule) },
       {
         path: 'voting',
-        canActivateChild: [AuthGuard],
+        // canActivateChild: [AuthGuard],
         children: [
           {
             path: '',
-            canActivateChild: [AuthGuard],
+            // canActivateChild: [AuthGuard],
             loadChildren: () =>
               import('../voting-tab/voting-tab.module').then(m => m.VotingTabPageModule)
           }
@@ -24,11 +24,11 @@ const routes: Routes = [
       },
       {
         path: 'observe',
-        canActivateChild: [AuthGuard],
+        // canActivateChild: [AuthGuard],
         children: [
           {
             path: '',
-            canActivateChild: [AuthGuard],
+            // canActivateChild: [AuthGuard],
             loadChildren: () =>
               import('../observe-tab/observe-tab.module').then(m => m.ObserveTabPageModule)
           }
@@ -47,14 +47,14 @@ const routes: Routes = [
       {path: 'logout' },
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];
