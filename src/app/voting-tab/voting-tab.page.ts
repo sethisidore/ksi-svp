@@ -15,9 +15,13 @@ export class VotingTabPage {
     LG: boolean;
   };
 
-  Options: Array<string> = [
-    'Presidential', 'Senatorial', 'House of Reps', 'Governorship',
-    'House of Assemblies', 'Local Government', 'Verify/Audit'
+  Options: Array<{ type: string, code: string }> = [
+    { type: 'Presidential', code: 'presidential' },
+    { type: 'Senatorial', code: 'senatorial' },
+    { type: 'House of Representatives', code: 'HOR' }, 
+    { type: 'Governorship', code: 'gubernatorial'},
+    { type: 'House of Assemblies', code: 'HOA' },
+    { type: 'Local Government', code: 'LG' },
   ];
 
   constructor() { }

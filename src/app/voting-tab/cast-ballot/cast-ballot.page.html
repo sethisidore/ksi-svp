@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="medium"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cast Ballot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed="lg">
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center">
+
+        <ion-card>
+          <ion-card-content>
+            <form [formGroup]="castBallotForm" (ngSubmit)="onSubmit()">
+              <ion-item>
+                <ion-label position="floating">Choice</ion-label>
+                <ion-select expand="full" placeholder="Select your choice" [interfaceOptions]="customPopoverOptions"
+                  interface="popover" [compareWith]="compareWith" formControlName="choice">
+                  <ion-select-option [value]="party.initials" *ngFor="let party of partyList; index as count">
+                    <ion-badge color="tertiary"> {{ count }} </ion-badge> {{ party.logo + ' ' + party.initials }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Re-Confirm</ion-label>
+                <ion-select expand="full" placeholder="re-confirm selection" [interfaceOptions]="customPopoverOptions"
+                  interface="popover" [compareWith]="compareWith" formControlName="reConfirm">
+                  <ion-select-option [value]="party.initials"
+                    *ngFor="let party of partyList; index as count; trackBy: party.initials">
+                    <ion-badge color="tertiary"> {{ count }} </ion-badge> {{ party.logo + ' ' + party.initials }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <br />
+              <ion-button shape="round" expand="full" fill="outline" color="tertiary"
+                (click)="showPromptBeforeSubmit()">Confirm
+              </ion-button>
+              <br />
+
+              <br />
+              <ion-button shape="round" expand="full" color="warning" fill="outline" [disabled]="!castBallotForm.valid"
+                (click)="encryptVote()">Encrypt Vote
+              </ion-button>
+              <br />
+
+              <br />
+              <ion-button shape="round" expand="full" fill="outline" color="success" type="submit">Vote</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

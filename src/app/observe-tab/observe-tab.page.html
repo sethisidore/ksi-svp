@@ -6,4 +6,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content class="ion-padding">
+
+    <ion-grid fixed="lg">
+        <ion-row class="ion-justify-content-center">
+          <ion-col class="ion-align-self-center" size="12">
+    
+            <ion-card *ngFor="let item of Options; let even = even; let odd = odd" [ngClass]="{ even: even, odd: odd }">
+              <ion-card-header>
+                <ion-card-title>
+                  <ion-button expand="full" fill="outline" shape="round" [routerLink]="['./', item.code.toLowerCase()]">
+                    {{ item.type }} </ion-button>
+                </ion-card-title>
+              </ion-card-header>
+            </ion-card>
+    
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>
