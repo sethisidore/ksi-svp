@@ -7,10 +7,13 @@ import { IonicModule } from '@ionic/angular';
 
 import { AuthPage } from './auth.page';
 import { OtpPage } from './otp/otp.page';
+import { RegisterPage } from './register/register.page';
 
 const routes: Routes = [
   { path: 'login', component: AuthPage },
-  { path: 'otp', component: OtpPage }
+  { path: 'otp', component: OtpPage },
+  { path: 'register', component: RegisterPage }
+
 ];
 
 @NgModule({
@@ -20,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AuthPage, OtpPage]
+  declarations: [AuthPage, OtpPage, RegisterPage]
 })
 export class AuthPageModule {}

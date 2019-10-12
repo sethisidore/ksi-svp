@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" [routerLink]="['../home']">
+    <ion-buttons slot="start">
       <ion-back-button color="medium"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Login</ion-title>
@@ -9,29 +9,34 @@
 
 <ion-content class="ion-padding">
 
-  <ion-grid fixed="md">
+  <ion-grid fixed="lg">
     <ion-row class="ion-justify-content-center">
-      <ion-col size="10" class="ion-align-self-center">
-        <ion-card class="ion-padding">
-          <form [formGroup]="loginForm" ngSubmit="onSubmit">
+      <ion-col size="12" class="ion-align-self-center">
+        <ion-card>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <ion-item>
-              <ion-label position="inline">VIN: </ion-label>
+              <ion-label position="floating">VIN: </ion-label>
               <ion-input formControlName="vin" placeholder="817G-J2J9-91821931"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="inline">Contact: </ion-label>
+              <ion-label position="floating">Contact: </ion-label>
               <ion-input formControlName="contact" placeholder="+234 81 002 00115"></ion-input>
             </ion-item>
+            <br>
 
-            <ion-button shape="round" color="success" expand="full" fill="outline" class="align-self-center"
+            <ion-button type="submit" shape="round" color="tertiary" expand="full" fill="outline" class="align-self-center"
               [disabled]="!loginForm.valid">Login
-            </ion-button>
-            <p>
-              <ion-text class="ion-text-center">Already logged in?</ion-text>
-            </p>
+            </ion-button> <br>
+            <p class="ion-text-center">Already logged in?</p>
             <ion-button [routerLink]="['/otp']" color="secondary" shape="round" expand="full" fill="outline"
               class="align-self-center">Verify OTP
             </ion-button>
+
+            <br><br>
+
+            <p class="ion-text-center">Not a member?</p>
+            <ion-button [routerLink]="['/register']" shape="round" color="success" expand="full" fill="outline">Register</ion-button>
+            <br>
           </form>
         </ion-card>
       </ion-col>

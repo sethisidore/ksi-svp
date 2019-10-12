@@ -17,14 +17,20 @@
   </ion-card>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="!status">
   <ion-toolbar>
     <ion-row>
-      <ion-col>
-        <ion-button color="primary" expand="full" [routerLink]="['/login']" [disabled]="status">login</ion-button>
+      <ion-col size="4">
+        <ion-button color="primary" expand="full" [routerLink]="['/login']"
+          [disabled]="status">Login</ion-button>
       </ion-col>
-      <ion-col>
-        <ion-button color="success" expand="full" [routerLink]="['/otp']" [disabled]="status">Verify OTP</ion-button>
+      <ion-col size="4">
+        <ion-button color="secondary" expand="full" [routerLink]="['/otp']"
+          [disabled]="status">Verify OTP</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="success" expand="full" [routerLink]="['/register']"
+          [disabled]="status">Register</ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

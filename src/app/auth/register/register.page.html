@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="medium"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid fixed="lg">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-align-self-center">
+
+        <ion-card>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <ion-item>
+              <ion-label position="floating">VIN </ion-label>
+              <ion-input formControlName="vin" placeholder="817GJ2J991821931"></ion-input>
+            </ion-item>
+            <ion-item>
+
+              <ion-label position="floating">Username </ion-label>
+              <ion-input formControlName="username" placeholder="jon_3dn">
+                <ion-icon name="at"></ion-icon> &nbsp;
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Email </ion-label>
+              <ion-input formControlName="email" placeholder="jondoe23@email.com">
+                <ion-icon name="mail"></ion-icon> &nbsp;
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Contact </ion-label>
+              <ion-input formControlName="contact" placeholder="+234 81 002 00115">
+                <ion-icon name="contact"></ion-icon> &nbsp;
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Password </ion-label>
+              <ion-input formControlName="password" type="password" placeholder="skls">
+                <ion-icon name="lock"></ion-icon> &nbsp;
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Confirm Password </ion-label>
+              <ion-input formControlName="confirmPassword" type="password" placeholder="skls">
+                <ion-icon name="lock"></ion-icon> &nbsp;
+              </ion-input>
+            </ion-item>
+
+            <br>
+
+            <ion-button type="submit" shape="round" color="secondary" expand="full" fill="outline" [disabled]="!registerForm.valid">
+              Register
+            </ion-button>
+
+            <br />
+
+            <p class="ion-text-center">Already a member?</p>
+            <ion-button [routerLink]="['/login']" color="success" shape="round" expand="full" fill="outline"
+              class="align-self-center">Login
+            </ion-button> <br>
+          </form>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { StorageService } from '../helpers';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -23,14 +23,16 @@ export class AuthService {
   }
 
   verifyOTP(otp: string) {
-    this.http.post<TokenPayload>(`${this.authUrl}/otp`, otp).subscribe(resp => {
+    return this.http.post<TokenPayload>(`${this.authUrl}/otp`, otp).subscribe(resp => {
       this.storage.setObject('auth-token', resp).then(() => {
         this.router.navigate(['/tabs/voting']);
       });
     });
   }
 
-  resendOTP() {}
+  resendOTP() {
+    return this.http.get(`${this.authUrl}/resend`);
+  }
 
   logout() {
     return this.http.get(`${this.authUrl}/logout`).subscribe(() => {
@@ -43,6 +45,10 @@ export class AuthService {
     this.token = await this.storage.getObject('auth-token');
     return (this.token && this.token.expires > (Date.now() / 1000)) ? true : false;
   }
+
+  register(body: RegisterType) {
+    return this.http.post<RegisterType>(`${this.authUrl}/register`, body);
+  }
 }
 
 export interface TokenPayload {
@@ -50,4 +56,13 @@ export interface TokenPayload {
   expires: number;
   vin: string;
   regWard: string;
+}
+
+export interface RegisterType {
+  vin: string;
+  username: string;
+  email: string;
+  contact: string;
+  password: string;
+  confirmPassword: string;
 }

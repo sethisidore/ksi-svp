@@ -24,7 +24,7 @@ export class AuthPage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      vin: ['', [Validators.pattern(/[A-Z1-9]{4}\[1-9A-Z]{4}\-[0-9]{8}/), Validators.required]],
+      vin: ['', [Validators.pattern(/[A-Z0-9]{8}[0-9]{10}/), Validators.required]],
       contact: ['', Validators.required]
     });
   }
@@ -38,7 +38,7 @@ export class AuthPage implements OnInit {
   }
 
   onSubmit() {
-    this.auth.login(this.loginForm.value).subscribe(() => {
+    return this.auth.login(this.loginForm.value).subscribe(() => {
       this.router.navigate(['/otp']);
     });
   }
