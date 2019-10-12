@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid size="lg">
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center">
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-img shape="round" src="/assets/shapes.svg" alt="profile pic"></ion-img>
+            </ion-card-title>
+            <ion-card-subtitle>User account</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content></ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-button shape="round" fill="outline" expand="full" (click)="logout()">
+              Logout &nbsp; &nbsp;
+              <ion-icon name="unlock"></ion-icon>
+            </ion-button>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

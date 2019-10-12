@@ -10,12 +10,14 @@ import { BugReportPage } from './bug-report/bug-report.page';
   styleUrls: ['./more-tab.page.scss']
 })
 export class MoreTabPage {
-  version: '1.0.18';
-  build: '18';
-  hash: '29H0wkh29dhU39aHIa03';
+  version: string = '1.0.4';
+  build: number = 18;
+  hash: string = '29H0wMZ29dhU39aHIa03';
+  toggle: number = 0;
+
   constructor(
     private modalController: ModalController
-  ) {}
+  ) { }
 
   async faq() {
     const faqModal = await this.modalController.create({
@@ -29,5 +31,11 @@ export class MoreTabPage {
       component: BugReportPage
     });
     return await bugReportModal.present();
+  }
+
+  toggleAdmin() {
+    if (this.toggle < 15) {
+      return this.toggle += 1;
+    } else { return; }
   }
 }

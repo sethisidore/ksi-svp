@@ -17,8 +17,7 @@ const routes: Routes = [
           {
             path: '',
             // canActivateChild: [AuthGuard],
-            loadChildren: () =>
-              import('../voting-tab/voting-tab.module').then(m => m.VotingTabPageModule)
+            loadChildren: () => import('../voting-tab/voting-tab.module').then(m => m.VotingTabPageModule)
           }
         ]
       },
@@ -29,8 +28,7 @@ const routes: Routes = [
           {
             path: '',
             // canActivateChild: [AuthGuard],
-            loadChildren: () =>
-              import('../observe-tab/observe-tab.module').then(m => m.ObserveTabPageModule)
+            loadChildren: () => import('../observe-tab/observe-tab.module').then(m => m.ObserveTabPageModule)
           }
         ]
       },
@@ -39,12 +37,19 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../more-tab/more-tab.module').then(m => m.MoreTabPageModule)
+            loadChildren: () => import('../more-tab/more-tab.module').then(m => m.MoreTabPageModule)
           }
         ]
       },
-      {path: 'logout' },
+      {
+        path: 'user',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../user-tab/user-tab.module').then(m => m.UserTabPageModule)
+          }
+        ]
+     },
       {
         path: '',
         redirectTo: '/tabs/home',
@@ -57,6 +62,7 @@ const routes: Routes = [
     redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({
