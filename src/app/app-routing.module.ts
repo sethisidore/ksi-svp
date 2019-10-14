@@ -4,11 +4,16 @@ import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule),
+    // canLoad: [AuthGuard]
+  },
+  {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
     // canActivate: [AuthGuard]
   },
-  { path: '', loadChildren: './auth/auth.module#AuthPageModule' }
+  { path: '', loadChildren: './auth/auth.module#AuthPageModule' },
 ];
 @NgModule({
   imports: [

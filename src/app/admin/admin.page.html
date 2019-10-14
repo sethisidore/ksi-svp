@@ -1,0 +1,35 @@
+<ion-split-pane>
+
+  <ion-menu side="start" menuId="AdminMenu" contentId="AdminMenuContent" type="overlay" class="admin-menu"
+    [disabled]="adminService.status">
+    <ion-header>
+      <ion-toolbar color="secondary">
+        <ion-title>Admin Dashboard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list class="admin-menu-content">
+        <ion-menu-toggle autoHide="false" *ngFor="let pages of adminPages">
+          <ion-item [routerLink]="[pages.url]">
+            <ion-icon slot="start" [name]="pages.icon"></ion-icon>
+            <ion-label> {{pages.title}} </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <br><br><br><br><br>
+
+        <ion-menu-toggle autoHide="false">
+          <ion-item (click)="logout()">
+            <ion-icon slot="start" name="unlock"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="AdminMenuContent" main></ion-router-outlet>
+
+</ion-split-pane>
