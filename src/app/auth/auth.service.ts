@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { StorageService } from '../helpers';
+import { SERVER_URL } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { StorageService } from '../helpers';
 
 export class AuthService {
   token: TokenPayload;
-  authUrl = 'localhost:3000/api/auth';
+  authUrl = `${SERVER_URL}/auth`;
 
   constructor(
     private http: HttpClient,
@@ -60,7 +61,6 @@ export interface TokenPayload {
 
 export interface RegisterType {
   vin: string;
-  username: string;
   email: string;
   contact: string;
   password: string;

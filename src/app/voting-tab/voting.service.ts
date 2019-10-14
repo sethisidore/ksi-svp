@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AlertService } from '../helpers';
+import { SERVER_URL } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VotingService {
-  votingUrl: string = 'localhost:3000/api/voting';
+  votingUrl: string = `${SERVER_URL}/voting`;
 
   constructor(
     private alertService: AlertService,
@@ -41,6 +42,7 @@ export interface Ballot {
 
 export interface Party {
   initials: string;
+  name: string;
   logo: string;
   restrictions?: Array<string>;
 };
