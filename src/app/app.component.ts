@@ -39,24 +39,24 @@ export class AppComponent {
         this.alertService.presentToastWithOptions({
           message: 'No internet connection: Please check network settings!',
           position: 'bottom',
-          color: 'red',
+          color: 'warning',
           animated: true,
-          duration: 5000
+          duration: 5000,
+          showCloseButton: true
         });
       } else {
         setTimeout(() => {
           if (this.status.connected) {
-            this.alertService.toast.dismiss();
             this.alertService.presentToastWithOptions({
               message: 'Connection Restored!!',
               position: 'bottom',
-              color: 'primary',
+              color: 'medium',
               animated: true,
-              duration: 2000
+              duration: 2000,
+              showCloseButton: true
             });
           }
         }, 3000);
-        this.alertService.toast.dismiss();
       }
     });
     this.status = await Network.getStatus();

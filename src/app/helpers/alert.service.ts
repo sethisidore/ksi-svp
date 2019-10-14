@@ -6,14 +6,13 @@ import { ToastOptions } from '@ionic/core';
   providedIn: 'root'
 })
 export class AlertService {
-  toast: HTMLIonToastElement;
 
   constructor(
     private toastController: ToastController
   ) { }
 
   async presentToast(message: string) {
-    this.toast = await this.toastController.create({
+    const toast = await this.toastController.create({
       message,
       color: 'dark',
       duration: 2000,
@@ -22,11 +21,11 @@ export class AlertService {
       animated: true,
     });
 
-    this.toast.present();
+    toast.present();
   }
 
   async presentToastWithOptions(toastOpts: ToastOptions) {
-    this.toast = await this.toastController.create(toastOpts);
-    this.toast.present();
+    const toast = await this.toastController.create(toastOpts);
+    toast.present();
   }
 }

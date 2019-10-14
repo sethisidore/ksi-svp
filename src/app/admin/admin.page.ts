@@ -14,11 +14,14 @@ export class AdminPage implements OnInit {
     { title: 'Login', url: '/admin', icon: 'lock' }
   ];
 
+  status: boolean;
+
   constructor(
     private adminService: AdminService
   ) { }
 
   ngOnInit() {
+    this.status = this.adminService.status;
   }
   
   logout() {
