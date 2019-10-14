@@ -11,8 +11,7 @@ import { FaqPage } from './faq/faq.page';
 const routes: Route[] = [
   { path: '', component: MoreTabPage, },
   { path: 'faqs', component: FaqPage },
-  { path: 'bugs', component: BugReportPage },
-  { path: 'admin' }
+  { path: 'bugs', component: BugReportPage }
 ];
 
 @NgModule({

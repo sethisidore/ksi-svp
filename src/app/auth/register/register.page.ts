@@ -20,7 +20,6 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
       email: ['', Validators.required],
       vin: ['', Validators.required],
       contact: ['', Validators.required],
@@ -31,7 +30,7 @@ export class RegisterPage implements OnInit {
 
   onSubmit() {
     return this.auth.register(this.registerForm.value).subscribe((resp) => {
-      this.router.navigate([`/tabs/user/${resp.username}`]);
+      this.router.navigate([`/tabs/user/${resp.vin}`]);
     });
   }
 

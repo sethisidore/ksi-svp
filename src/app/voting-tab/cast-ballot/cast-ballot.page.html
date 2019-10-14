@@ -24,14 +24,14 @@
                     <ion-badge color="tertiary"> {{ count }} </ion-badge> {{ party.logo + ' ' + party.initials }}
                   </ion-select-option>
                 </ion-select>
-              </ion-item>
+              </ion-item> <br>
 
               <ion-item>
                 <ion-label position="floating">Re-Confirm</ion-label>
                 <ion-select expand="full" placeholder="re-confirm selection" [interfaceOptions]="customPopoverOptions"
                   interface="popover" [compareWith]="compareWith" formControlName="reConfirm">
                   <ion-select-option [value]="party.initials"
-                    *ngFor="let party of partyList; index as count; trackBy: party.initials">
+                    *ngFor="let party of partyList; index as count; trackBy: trackParty">
                     <ion-badge color="tertiary"> {{ count }} </ion-badge> {{ party.logo + ' ' + party.initials }}
                   </ion-select-option>
                 </ion-select>
