@@ -1,52 +1,59 @@
 <ion-header>
   <ion-toolbar>
+    <ion-title>Add/Edit Party</ion-title>
     <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
+      <ion-button shape="round" (click)="onDismissModal()">Close &nbsp;
+        <ion-icon name="close-circle-outline" size="large"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>Parties Management</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
   <ion-grid size="lg">
-    <ion-row *ngIf="AllParties" class="ion-justify-content-center">
-      <ion-col class="ion-align-self-center">
-
-        <ion-card *ngFor="let party of AllParties; count as index; let odd = odd" [ngClass]="{ odd: odd }">
-          <ion-card-header>
-            <ion-card-title> {{ party.name }} </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p><span class="ion-text-bold">Initials:</span> {{ party.initials }} </p>
-            <p><span class="ion-text-bold">Logo:</span> {{ party.logo }} </p>
-            <p><span class="ion-text-bold">Restrictions:</span> {{ party.restrictions }}</p>
-          </ion-card-content>
-        </ion-card>
-
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid *ngIf="!AllParties" class="custom-skeleton">
     <ion-row class="ion-justify-content-center">
-      <ion-col size="11">
-
-        <ion-card *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
-          <ion-card-header>
-            <ion-card-title>
-              <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
-            </ion-card-title>
-          </ion-card-header>
-
+      <ion-col class="ion-align-self-center my-content">
+        <ion-card class="my-content">
           <ion-card-content>
-            <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
-            <ion-skeleton-text animated></ion-skeleton-text>
-            <ion-skeleton-text animated style="width:80%"></ion-skeleton-text>
-            <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
+            <form [formGroup]="partyForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+              <ion-item>
+                <ion-label position="floating">Party Name </ion-label>
+                <ion-input color="medium" type="text" clearInput placeholder="Alliance for Democracy ..."
+                  formControlName="name">
+                  <ion-icon color="success" name="flag" size="large"></ion-icon> &nbsp;
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Initials </ion-label>
+                <ion-input color="warning" type="text" clearInput placeholder="AAA, BB, Z.Z" formControlName="initials">
+                  <ion-icon color="success" name="at" size="large"></ion-icon> &nbsp;
+                </ion-input>
+              </ion-item><br>
+
+              <ion-item>
+                <ion-label position="floating">Logo </ion-label><br>
+                <ion-input type="file" formControlName="logo">
+                  <ion-icon color="success" slot="end" name="image" size="large"></ion-icon> &nbsp;
+                </ion-input>
+              </ion-item> <br>
+
+              <ion-item>
+                <ion-label position="floating">Restrictions </ion-label><br>
+                <ion-input type="text" multiple placeholder="this" formControlName="restrictions">
+                  <ion-icon color="success" name="lock" size="large"></ion-icon> &nbsp;
+                </ion-input>
+              </ion-item>
+              <br><br>
+
+              <ion-button expand="full" fill="outline" type="submit" shape="round" color="success"
+                [disabled]="!partyForm.valid">Create
+              </ion-button>
+            </form>
+
           </ion-card-content>
         </ion-card>
-
       </ion-col>
     </ion-row>
   </ion-grid>

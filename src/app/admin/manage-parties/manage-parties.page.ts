@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MenuController } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 
 import { AdminService } from '../admin.service';
 import { Party } from 'src/app/voting-tab/voting.service';
@@ -11,38 +11,35 @@ import { Party } from 'src/app/voting-tab/voting.service';
   styleUrls: ['./manage-parties.page.scss'],
 })
 export class ManagePartiesPage implements OnInit {
-  managePartyForm: FormGroup;
-  AllParties: Party[];
+  partyForm: FormGroup;
+  @Input() partyToEdit: Party;
 
   constructor(
     private adminService: AdminService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
-    this.adminService.getParties().subscribe(resp => {
-      this.AllParties = resp;
-    });
+    if (this.partyToEdit) {
+      this.partyForm = this.fb.group(this.partyToEdit)
+    } else {
+      this.partyForm = this.fb.group({
+        name: ['', Validators.required],
+        initials: ['', [Validators.pattern(/[A-Z]{1,4}/), Validators.required]],
+        logo: ['', Validators.required],
+        restrictions: [['']],
+      });
+    } 
   }
 
-  onAdd() {
-    this.managePartyForm = this.fb.group({
-      initials: ['', [Validators.pattern(/[A-Z]{2,4}/), Validators.required]],
-      name: ['', Validators.required],
-      logo: ['', Validators.required],
-      restrictions: [['']]
+  onDismissModal() {
+    this.modalController.dismiss({
+      'dismissed': true
     });
-  }
-
-  onEdit(party: Party) {
-    return this.managePartyForm = this.fb.group(party);
   }
 
   onSubmit() {
-    return this.adminService.createParty(this.managePartyForm.value);
-  }
-
-  onSave() {
-    return this.adminService.updateParty(this.managePartyForm.value);
+    return this.adminService.createParty(this.partyForm.value).subscribe();
   }
 }

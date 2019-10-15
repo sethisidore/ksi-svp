@@ -8,7 +8,7 @@ import { AdminService } from './admin.service';
 })
 export class AdminPage implements OnInit {
   public adminPages = [
-    { title: 'Schedule Election', url: 'schedule', icon: 'calender' },
+    { title: 'Schedule Election', url: 'schedule', icon: 'clock' },
     { title: 'Manage Parties', url: 'parties', icon: 'flag' },
     { title: 'Return to Main App', url: '/tabs/home', icon: 'home' },
     { title: 'Login', url: '/admin', icon: 'lock' }

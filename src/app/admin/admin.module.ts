@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { AdminPage } from './admin.page';
 import { AdminAuthPage } from './admin-auth/admin-auth.page';
+import { ListPartiesPage } from './list-parties/list-parties.page';
 import { ManagePartiesPage } from './manage-parties/manage-parties.page';
 
 const routes: Routes = [
   {
     path: '', component: AdminPage, children: [
       { path: '', component: AdminAuthPage },
-      { path: 'parties', component: ManagePartiesPage },
+      { path: 'parties', component: ListPartiesPage },
       { path: 'schedule' }
     ]
   }
@@ -26,6 +27,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdminPage, AdminAuthPage, ManagePartiesPage]
+  declarations: [AdminPage, AdminAuthPage, ListPartiesPage, ManagePartiesPage],
+  entryComponents: [ManagePartiesPage]
 })
 export class AdminPageModule { }

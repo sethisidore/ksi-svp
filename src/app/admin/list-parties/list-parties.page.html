@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="medium"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Political Parties</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid size="lg">
+
+    <p class="ion-text-center">
+      <ion-button color="success" expand="full" fill="outline" shape="round" (click)="onAddModal()">
+        Add Party &nbsp; &nbsp; &nbsp; 
+        <ion-icon name="add-circle" size="large"></ion-icon>
+      </ion-button>
+    </p>
+
+    <ion-row *ngIf="AllParties" class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center">
+
+        <ion-card *ngFor="let party of AllParties; count as index; let odd = odd" [ngClass]="{ odd: odd }">
+          <ion-card-header>
+            <ion-card-title> {{ party.name }} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p><span class="ion-text-bold">Initials:</span> {{ party.initials }} </p>
+            <p><span class="ion-text-bold">Logo:</span> {{ party.logo }} </p>
+            <ion-label>Restrictions: </ion-label>
+            <p *ngFor="let item of party.restrictions"><span class="ion-text-bold">Restrictions:</span> {{ item }}</p>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="!AllParties" class="custom-skeleton">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11">
+
+        <ion-card *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated style="width:80%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
