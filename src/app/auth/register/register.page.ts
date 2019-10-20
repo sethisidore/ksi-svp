@@ -20,17 +20,17 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      email: ['', Validators.required],
-      vin: ['', Validators.required],
-      contact: ['', Validators.required],
-      password: ['', Validators.required],
+      vin: ['', [Validators.required, Validators.pattern(/[A-Z0-9]{8}[0-9]{12}/)]],
+      contact: ['', [Validators.required, Validators.pattern(/\+234(([7-9]0)|81)([1-7]|9)[0-9]{7}/)]],
+      username: ['', [Validators.required, Validators.pattern(/[A-Za-z][A-za-Z0-9_]{2,50}/)]],
+      password: ['', [Validators.required, Validators.pattern(/[a-ZA-z0-9_#*&%@()!$*]{4,100}/)]],
       confirmPassword: ['', Validators.required]
     });
   }
 
   onSubmit() {
     return this.auth.register(this.registerForm.value).subscribe((resp) => {
-      this.router.navigate([`/tabs/user/${resp.vin}`]);
+      this.router.navigate(['/otp']);
     });
   }
 

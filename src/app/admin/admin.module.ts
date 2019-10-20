@@ -15,7 +15,8 @@ const routes: Routes = [
     path: '', component: AdminPage, children: [
       { path: '', component: AdminAuthPage },
       { path: 'parties', component: ListPartiesPage },
-      { path: 'schedule' }
+      { path: 'schedule' },
+      { path: 'users' }
     ]
   }
 ];

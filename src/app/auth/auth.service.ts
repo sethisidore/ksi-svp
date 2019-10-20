@@ -19,14 +19,21 @@ export class AuthService {
     private router: Router,
     private storage: StorageService) { }
 
-  login(user: TokenPayload): Observable<TokenPayload> {
-    return this.http.post<TokenPayload>(`${this.authUrl}/login`, user);
+  login(user: { username: string, password: string}) {
+    this.storage.setObject('temp-user', user).then(() => {});
+    return this.http.post(`${this.authUrl}/login`, user);
   }
 
   verifyOTP(otp: string) {
-    return this.http.post<TokenPayload>(`${this.authUrl}/otp`, otp).subscribe(resp => {
+    let user: {username: string, password: string, otp: string|undefined};
+    this.storage.getObject('temp-user').then(resp => {
+      user = resp;
+      user.otp = otp;
+    });
+
+    return this.http.post<TokenPayload>(`${this.authUrl}/otp`, user).subscribe(resp => {
       this.storage.setObject('auth-token', resp).then(() => {
-        this.router.navigate(['/tabs/voting']);
+        this.storage.removeItem('temp-user').then(() => this.router.navigate(['/tabs/voting']));
       });
     });
   }
@@ -37,8 +44,7 @@ export class AuthService {
 
   logout() {
     return this.http.get(`${this.authUrl}/logout`).subscribe(() => {
-      this.storage.removeItem('auth-token');
-      delete this.token;
+      this.storage.removeItem('auth-token').then(() => delete this.token);
     });
   }
 
@@ -48,20 +54,20 @@ export class AuthService {
   }
 
   register(body: RegisterType) {
-    return this.http.post<RegisterType>(`${this.authUrl}/register`, body);
+    return this.http.post(`${this.authUrl}/register`, body);
   }
 }
 
 export interface TokenPayload {
   id: string;
   expires: number;
-  vin: string;
-  regWard: string;
+  username: string;
+  regWard?: string;
 }
 
 export interface RegisterType {
   vin: string;
-  email: string;
+  username: string;
   contact: string;
   password: string;
   confirmPassword: string;

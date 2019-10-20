@@ -24,8 +24,8 @@ export class AuthPage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      vin: ['', [Validators.pattern(/[A-Z0-9]{8}[0-9]{10}/), Validators.required]],
-      contact: ['', Validators.required]
+      username: ['', [Validators.required, Validators.pattern(/[A-Za-z][A-za-Z0-9_]{2,50}/)]],
+      password: ['', [Validators.required, Validators.pattern(/[a-ZA-z0-9_#*&%@()!$*]{4,100}/)]]
     });
   }
 

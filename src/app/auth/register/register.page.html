@@ -18,14 +18,14 @@
             <ion-item>
               <ion-label position="floating">VIN </ion-label>
               <ion-input formControlName="vin" placeholder="817GJ2J991821931">
-                <ion-icon name="at"></ion-icon> &nbsp;
+                <ion-icon name="bar"></ion-icon> &nbsp;
               </ion-input>
             </ion-item><br>
 
             <ion-item>
-              <ion-label position="floating">Email </ion-label>
-              <ion-input formControlName="email" placeholder="jondoe23@email.com">
-                <ion-icon name="mail"></ion-icon> &nbsp;
+              <ion-label position="floating">Username </ion-label>
+              <ion-input formControlName="username" placeholder="jondoe23">
+                <ion-icon name="@"></ion-icon> &nbsp;
               </ion-input>
             </ion-item><br>
 
@@ -55,14 +55,13 @@
             <ion-button type="submit" shape="round" color="secondary" expand="full" fill="outline" [disabled]="!registerForm.valid">
               Register
             </ion-button>
-
-            <br /><br>
-
-            <p class="ion-text-center">Already a member?</p>
-            <ion-button [routerLink]="['/login']" color="success" shape="round" expand="full" fill="outline"
-              class="align-self-center">Login
-            </ion-button> <br><br>
           </form>
+          <br /><br>
+
+          <p class="ion-text-center">Already a member?</p>
+          <ion-button [routerLink]="['/login']" color="success" shape="round" expand="full" fill="outline"
+            class="align-self-center">Login
+          </ion-button> <br><br>
         </ion-card>
       </ion-col>
     </ion-row>

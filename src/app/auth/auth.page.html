@@ -15,12 +15,12 @@
         <ion-card>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <ion-item>
-              <ion-label position="floating">VIN: </ion-label>
-              <ion-input formControlName="vin" placeholder="817G-J2J9-91821931"></ion-input>
+              <ion-label position="floating">Username </ion-label>
+              <ion-input formControlName="username" placeholder="817G-J2J9-91821931"></ion-input>
             </ion-item> <br>
             <ion-item>
-              <ion-label position="floating">Contact: </ion-label>
-              <ion-input formControlName="contact" placeholder="+234 81 002 00115"></ion-input>
+              <ion-label position="floating">Password: </ion-label>
+              <ion-input formControlName="password" placeholder="92lsj_$2*"></ion-input>
             </ion-item>
             <br>
 
@@ -31,13 +31,12 @@
             <ion-button [routerLink]="['/otp']" color="secondary" shape="round" expand="full" fill="outline"
               class="align-self-center">Verify OTP
             </ion-button>
-
-            <br><br>
-
-            <p class="ion-text-center">Not a member?</p>
-            <ion-button [routerLink]="['/register']" shape="round" color="success" expand="full" fill="outline">Register</ion-button>
-            <br>
           </form>
+          <br><br>
+
+          <p class="ion-text-center">Not a member?</p>
+          <ion-button [routerLink]="['/register']" shape="round" color="success" expand="full" fill="outline">Register</ion-button>
+          <br>
         </ion-card>
       </ion-col>
     </ion-row>
