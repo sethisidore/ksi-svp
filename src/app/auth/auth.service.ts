@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   verifyOTP(otp: string) {
-    let user: {username: string, password: string, otp: string|undefined};
+    let user: {username: string, password: string, otp?: string|undefined};
     this.storage.getObject('temp-user').then(resp => {
       user = resp;
       user.otp = otp;
@@ -54,6 +54,15 @@ export class AuthService {
   }
 
   register(body: RegisterType) {
+    let user: {
+      username: string,
+      password: string,
+      otp?: string
+    };
+    const {username, password} = body
+    user.password = password, user.username = username;
+    this.storage.setObject('temp-user', user).then(() => {});
+
     return this.http.post(`${this.authUrl}/register`, body);
   }
 }
