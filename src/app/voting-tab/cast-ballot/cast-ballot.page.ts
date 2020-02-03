@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Plugins } from '@capacitor/core';
 
 import { VotingService, Party, ElectionRequestOptions } from '../voting.service';
+import { StorageService } from 'src/app/helpers';
 
 const { Modals } = Plugins;
 
@@ -25,12 +26,14 @@ export class CastBallotPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private storage: StorageService,
     private votingService: VotingService
     ) { }
 
   ngOnInit() {
     this.votingService.requestBallot(this.type).subscribe((resp) => {
       this.partyList = resp.parties;
+      this.storage.setItem('serverPublicKey', resp.publicKey)
     });
 
     this.castBallotForm = this.fb.group({
@@ -40,21 +43,9 @@ export class CastBallotPage implements OnInit {
   }
 
   onSubmit() {
-    const encrypted = this.encryptVote();
+    let encrypted: any;
+    this.encryptVote().then(value => encrypted = value);
     this.votingService.castBallot(encrypted).subscribe();
-  }
-
-  async showPromptBeforeSubmit() {
-    await Modals.prompt({
-      title: `Review ${this.type} Selection`,
-      message: `
-      <ion-item>
-        <ion-text>Your ${this.type} choice is: ${this.castBallotForm.value}</ion-text>
-      </ion-item>
-      `,
-      cancelButtonTitle: 'Cancel',
-      okButtonTitle: 'Continue'
-    });
   }
 
   compareWith = (early: Party, later: Party) => {
