@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+
+import { SupportService } from '../support.service';
 
 @Component({
   selector: 'app-faq',
@@ -14,13 +15,15 @@ export class FaqPage implements OnInit {
     { question: 'How to authenticate', answer: `enter your VIN and mobile number and wait for an otp to be sent to your phone,
      then proceed to enter the number. NOTE: no two persons can share the same number`}
   ];
+  FAQs: [];
 
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private supportService: SupportService
+    ) { }
 
   ngOnInit() {
-  }
-
-  dismissFAQ() {
-    this.modalController.dismiss();
+    this.supportService.getFAQs().subscribe(data =>{
+      this.FAQs = data;
+    });
   }
 }
