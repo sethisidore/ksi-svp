@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Plugins, NetworkStatus, PluginListenerHandle } from '@capacitor/core';
-import { FingerPrintAuth } from 'capacitor-fingerprint-auth';
 
 import { AlertService } from './helpers';
 
@@ -17,16 +16,11 @@ export class AppComponent {
 
   constructor(
     private alertService: AlertService,
-    private fingerAuth: FingerPrintAuth
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
-    this.fingerOrFaceAuth().catch(error => {
-      this.alertService.presentToast(error)
-    })
-
     SplashScreen.hide().catch(error => {
       this.alertService.presentToast(error);
     });
@@ -66,20 +60,5 @@ export class AppComponent {
       }
     });
     this.status = await Network.getStatus();
-  }
-
-  async fingerOrFaceAuth() {
-    const data = await this.fingerAuth.available();
-    if (!data.has) {
-      return this.alertService.presentToastWithOptions({
-        message: 'No fingerprint/face id support detected',
-        position: 'middle',
-        animated: true,
-        showCloseButton: true,
-        duration: 5000,
-        color: 'danger'
-      });
-    }
-    return await this.fingerAuth.verify() && await this.fingerAuth.verifyWithFallback();
   }
 }
