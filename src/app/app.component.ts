@@ -42,7 +42,7 @@ export class AppComponent {
           color: 'warning',
           animated: true,
           duration: 5000,
-          showCloseButton: true
+          buttons: ['Cancel']
         });
       } else {
         setTimeout(() => {
@@ -53,7 +53,7 @@ export class AppComponent {
               color: 'medium',
               animated: true,
               duration: 2000,
-              showCloseButton: true
+              buttons: ['Cancel']
             });
           }
         }, 3000);

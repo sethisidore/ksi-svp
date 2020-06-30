@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { ToastOptions } from '@ionic/core';
+import { ToastOptions, ToastButton } from '@ionic/core';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AlertService {
       color: 'dark',
       duration: 2000,
       position: 'top',
-      showCloseButton: true,
+      buttons: ['Cancel'],
       animated: true,
     });
 
